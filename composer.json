@@ -1,0 +1,33 @@
+{
+    "name": "jr/themed",
+    "description": "Provides theme awareness for Nette-powered applications.",
+    "authors": [
+        {
+            "name": "RebendaJiri",
+            "email": "jiri.rebenda@htmldriven.com"
+        }
+    ],
+	"license": "MIT",
+    "require": {
+		"php": ">=5.4.4",
+		"nette/application": "~2.3.0",
+		"nette/di": "~2.3.0",
+		"nette/utils": "~2.3.0"
+	},
+	"require-dev": {
+		"nette/tester": "~1.5"
+	},
+	"autoload": {
+		"psr-0": {
+			"JR\\Themed\\": "src/"
+		},
+		"classmap": [
+			"src/JR/Themed/exceptions.php"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/JRTests/Themed"
+		]
+	}
+}
