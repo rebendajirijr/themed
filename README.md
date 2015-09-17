@@ -1,2 +1,2 @@
 # themed
-Provides theme awareness to Nette-powered applications.
+Provides theme awareness for Nette-powered applications.
