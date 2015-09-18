@@ -4,7 +4,7 @@ namespace JRTests\Themed\ThemeManager;
 
 use Tester\Assert;
 use Tester\TestCase;
-use JR\Themed\ThemeManager\SimpleThemeManager;
+use JR\Themed\ThemeManager\RuntimeThemeManager;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
@@ -22,9 +22,9 @@ final class SimpleThemeManagerTestCase extends TestCase
 	{
 		$themesDir = __DIR__ . '/data/themes';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		
-		Assert::equal(SimpleThemeManager::$defaultTheme, $simpleThemeManager->getCurrentTheme());
+		Assert::equal(RuntimeThemeManager::$defaultTheme, $simpleThemeManager->getCurrentTheme());
 	}
 	
 	/**
@@ -34,9 +34,9 @@ final class SimpleThemeManagerTestCase extends TestCase
 	{
 		$themesDir = __DIR__ . '/data/themes';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		
-		Assert::equal(SimpleThemeManager::$defaultFallbackTheme, $simpleThemeManager->getFallbackTheme());
+		Assert::equal(RuntimeThemeManager::$defaultFallbackTheme, $simpleThemeManager->getFallbackTheme());
 	}
 	
 	/**
@@ -47,7 +47,7 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$currentTheme = 'bootstrap';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		$simpleThemeManager->setCurrentTheme($currentTheme);
 		
 		Assert::equal($currentTheme, $simpleThemeManager->getCurrentTheme());
@@ -61,7 +61,7 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$fallbackTheme = 'bootstrap';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		$simpleThemeManager->setFallbackTheme($fallbackTheme);
 		
 		Assert::equal($fallbackTheme, $simpleThemeManager->getFallbackTheme());
@@ -75,8 +75,8 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes-not-found';
 		
 		Assert::exception(function () use ($themesDir) {
-			$simpleThemeManager = new SimpleThemeManager($themesDir);
-		}, 'JR\Themed\DirectoryNotFoundException', "Directory '$themesDir' not found.");
+			$simpleThemeManager = new RuntimeThemeManager($themesDir);
+		}, 'JR\Themed\DirectoryNotFoundException', "Directory '$themesDir' does not exist or not accessible.");
 	}
 	
 	/**
@@ -87,7 +87,7 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$theme = 'foo';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		
 		Assert::exception(function () use ($simpleThemeManager, $theme) {
 			$simpleThemeManager->setCurrentTheme($theme);
@@ -103,7 +103,7 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$theme = 'foo';
 		
-		$simpleThemeManager = new SimpleThemeManager($themesDir);
+		$simpleThemeManager = new RuntimeThemeManager($themesDir);
 		
 		Assert::exception(function () use ($simpleThemeManager, $theme) {
 			$simpleThemeManager->setFallbackTheme($theme);

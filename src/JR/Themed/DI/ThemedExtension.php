@@ -5,10 +5,10 @@ namespace JR\Themed\DI;
 use Nette\DI\CompilerExtension;
 use Nette\Utils\Validators;
 use JR\Themed\DirectoryNotFoundException;
-use JR\Themed\ThemeManager\SimpleThemeManager;
+use JR\Themed\ThemeManager\RuntimeThemeManager;
 
 /**
- * Description of ThemedExtension.
+ * Nette Framework DI extension with theme related stuff.
  *
  * @author RebendaJiri <jiri.rebenda@htmldriven.com>
  */
@@ -26,9 +26,9 @@ class ThemedExtension extends CompilerExtension
 	 */
 	public function __construct()
 	{
-		$this->defaults['themesDir'] = $this->validateDirectory(__DIR__ . '/../../../../../../resources/themes');
-		$this->defaults['defaultTheme'] = SimpleThemeManager::$defaultTheme;
-		$this->defaults['defaultFallbackTheme'] = SimpleThemeManager::$defaultFallbackTheme;
+		$this->defaults['themesDir'] = __DIR__ . '/../../../../../../../../resources/themes';
+		$this->defaults['defaultTheme'] = RuntimeThemeManager::$defaultTheme;
+		$this->defaults['defaultFallbackTheme'] = RuntimeThemeManager::$defaultFallbackTheme;
 	}
 	
 	/*

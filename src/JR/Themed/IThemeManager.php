@@ -2,8 +2,6 @@
 
 namespace JR\Themed;
 
-use JR\Themed\DirectoryNotFoundException;
-
 /**
  * Description of IThemeManager.
  * 
@@ -14,18 +12,7 @@ interface IThemeManager
 	/**
 	 * @param string
 	 * @return self
-	 * @throws DirectoryNotFoundException
-	 */
-	function setThemesDir($themesDir);
-	
-	/**
-	 * @return string
-	 */
-	function getThemesDir();
-	
-	/**
-	 * @param string
-	 * @return self
+	 * @throws InvalidArgumentException
 	 */
 	function setCurrentTheme($theme);
 	
@@ -37,6 +24,7 @@ interface IThemeManager
 	/**
 	 * @param string
 	 * @return self
+	 * @throws InvalidArgumentException
 	 */
 	function setFallbackTheme($fallbackTheme);
 	

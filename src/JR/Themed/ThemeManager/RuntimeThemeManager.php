@@ -15,7 +15,7 @@ use JR\Themed\IThemeManager;
  *
  * @author RebendaJiri <jiri.rebenda@htmldriven.com>
  */
-class SimpleThemeManager extends Object implements IThemeManager
+class RuntimeThemeManager extends Object implements IThemeManager
 {
 	/** @var string */
 	public static $defaultTheme = 'default';
@@ -39,20 +39,22 @@ class SimpleThemeManager extends Object implements IThemeManager
 		$this->setFallbackTheme(static::$defaultFallbackTheme);
 	}
 	
-	/*
-	 * @inheritdoc
+	/**
+	 * @param string
+	 * @return self
+	 * @throws DirectoryNotFoundException
 	 */
 	public function setThemesDir($themesDir)
 	{
 		if (!is_dir($themesDir)) {
-			throw new DirectoryNotFoundException("Directory '$themesDir' not found.");
+			throw new DirectoryNotFoundException("Directory '$themesDir' does not exist or not accessible.");
 		}
 		$this->themesDir = $themesDir;
 		return $this;
 	}
 	
-	/*
-	 * @inheritdoc
+	/**
+	 * @return string
 	 */
 	public function getThemesDir()
 	{
@@ -103,7 +105,7 @@ class SimpleThemeManager extends Object implements IThemeManager
 				Finder::findDirectories('*')->in($this->getThemesDir())
 			)
 		);
-		array_walk($directories, function (&$item, $key) {
+		array_walk($directories, function (&$item) {
 			$item = basename($item);
 		});
 		return $directories;

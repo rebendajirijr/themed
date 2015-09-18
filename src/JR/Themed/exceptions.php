@@ -30,3 +30,10 @@ class IOException extends \RuntimeException
 class DirectoryNotFoundException extends IOException
 {
 }
+
+/**
+ * The exception that is thrown when static class is instantiated.
+ */
+class StaticClassException extends \LogicException
+{
+}
