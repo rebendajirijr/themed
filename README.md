@@ -1,4 +1,8 @@
 # jr/themed
+======
+
+[![Build Status](https://travis-ci.org/rebendajirijr/themed.svg?branch=master)](https://travis-ci.org/rebendajirijr/themed)
+
 Provides theme awareness for Nette-powered applications.
 
 
