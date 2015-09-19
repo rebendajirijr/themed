@@ -10,7 +10,7 @@ This extension provides simple theme awareness for Nette-powered applications.
    $ composer require jr/themed
    ```
 
-2. Register & optionally configure the extension via standard neon config:
+2. Register & optionally configure the extension via standard [neon config](https://github.com/nette/neon):
 
    ```yml
    extensions:
