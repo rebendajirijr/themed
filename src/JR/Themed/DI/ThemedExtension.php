@@ -56,7 +56,7 @@ class ThemedExtension extends CompilerExtension
 		$fallbackTheme = $config['fallbackTheme'];
 		
 		$containerBuilder->addDefinition($this->prefix('themeManager'))
-			->setClass('JR\Themed\ThemeManager\SimpleThemeManager', [
+			->setClass('JR\Themed\ThemeManager\RuntimeThemeManager', [
 				$themesDir,
 				$currentTheme,
 				$fallbackTheme,

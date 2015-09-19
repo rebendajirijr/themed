@@ -15,7 +15,9 @@
 		"nette/utils": "~2.3.0"
 	},
 	"require-dev": {
-		"nette/tester": "~1.5"
+		"nette/bootstrap": "~2.3.0",
+		"nette/tester": "~1.5",
+		"tracy/tracy": "~2.3.0"
 	},
 	"autoload": {
 		"psr-0": {
