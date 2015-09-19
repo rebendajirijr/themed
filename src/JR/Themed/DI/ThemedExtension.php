@@ -14,21 +14,24 @@ use JR\Themed\ThemeManager\RuntimeThemeManager;
  */
 class ThemedExtension extends CompilerExtension
 {
+	/** @var string */
+	const DEFAULT_CURRENT_THEME = 'default';
+	
+	/** @var string */
+	const DEFAULT_FALLBACK_THEME = 'default';
+	
 	/** @var array */
 	public $defaults = [
 		'themesDir' => NULL,
-		'defaultTheme' => NULL,
-		'defaultFallbackTheme' => NULL,
+		'currentTheme' => NULL,
+		'fallbackTheme' => NULL,
 	];
 	
-	/**
-	 * @throws DirectoryNotFoundException
-	 */
 	public function __construct()
 	{
 		$this->defaults['themesDir'] = __DIR__ . '/../../../../../../../../resources/themes';
-		$this->defaults['defaultTheme'] = RuntimeThemeManager::$defaultTheme;
-		$this->defaults['defaultFallbackTheme'] = RuntimeThemeManager::$defaultFallbackTheme;
+		$this->defaults['currentTheme'] = static::DEFAULT_CURRENT_THEME;
+		$this->defaults['fallbackTheme'] = static::DEFAULT_FALLBACK_THEME;
 	}
 	
 	/*
@@ -46,9 +49,17 @@ class ThemedExtension extends CompilerExtension
 		Validators::assertField($config, 'themesDir', 'string');
 		$themesDir = $this->validateDirectory($config['themesDir']);
 		
+		Validators::assertField($config, 'currentTheme', 'string');
+		$currentTheme = $config['currentTheme'];
+		
+		Validators::assertField($config, 'fallbackTheme', 'string');
+		$fallbackTheme = $config['fallbackTheme'];
+		
 		$containerBuilder->addDefinition($this->prefix('themeManager'))
 			->setClass('JR\Themed\ThemeManager\SimpleThemeManager', [
 				$themesDir,
+				$currentTheme,
+				$fallbackTheme,
 			]);
 	}
 	

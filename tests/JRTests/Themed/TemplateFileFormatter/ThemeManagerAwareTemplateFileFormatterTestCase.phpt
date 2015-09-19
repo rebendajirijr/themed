@@ -32,9 +32,11 @@ final class ThemeManagerAwareTemplateFileFormatterTestCase extends TestCase
 	{
 		parent::setUp();
 		
-		RuntimeThemeManager::$defaultTheme = 'bootstrap';
-		RuntimeThemeManager::$defaultFallbackTheme = 'fallback';
-		$this->themeManager = new RuntimeThemeManager(__DIR__ . '/data/themes');
+		$this->themeManager = new RuntimeThemeManager(
+			__DIR__ . '/data/themes',
+			'bootstrap',
+			'fallback'
+		);
 		
 		$this->themeManagerAwareTemplateFileFormatter = new ThemeManagerAwareTemplateFileFormatter($this->themeManager);
 	}

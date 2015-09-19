@@ -18,12 +18,6 @@ use JR\Themed\IThemeManager;
 class RuntimeThemeManager extends Object implements IThemeManager
 {
 	/** @var string */
-	public static $defaultTheme = 'default';
-	
-	/** @var string */
-	public static $defaultFallbackTheme = 'default';
-	
-	/** @var string */
 	private $currentTheme;
 	
 	/** @var string */
@@ -32,11 +26,15 @@ class RuntimeThemeManager extends Object implements IThemeManager
 	/** @var string */
 	private $themesDir;
 	
-	public function __construct($themesDir)
+	public function __construct(
+		$themesDir,
+		$currentTheme,
+		$fallbackTheme
+	)
 	{
 		$this->setThemesDir($themesDir);
-		$this->setCurrentTheme(static::$defaultTheme);
-		$this->setFallbackTheme(static::$defaultFallbackTheme);
+		$this->setCurrentTheme($currentTheme);
+		$this->setFallbackTheme($fallbackTheme);
 	}
 	
 	/**

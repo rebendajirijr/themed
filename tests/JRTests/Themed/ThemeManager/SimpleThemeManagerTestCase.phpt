@@ -18,13 +18,17 @@ final class SimpleThemeManagerTestCase extends TestCase
 	/**
 	 * @return void
 	 */
-	public function testDefaultTheme()
+	public function testDefaultCurrentTheme()
 	{
 		$themesDir = __DIR__ . '/data/themes';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
 		
-		Assert::equal(RuntimeThemeManager::$defaultTheme, $simpleThemeManager->getCurrentTheme());
+		Assert::equal('default', $runtimeThemeManager->getCurrentTheme());
 	}
 	
 	/**
@@ -34,9 +38,13 @@ final class SimpleThemeManagerTestCase extends TestCase
 	{
 		$themesDir = __DIR__ . '/data/themes';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
 		
-		Assert::equal(RuntimeThemeManager::$defaultFallbackTheme, $simpleThemeManager->getFallbackTheme());
+		Assert::equal('default', $runtimeThemeManager->getFallbackTheme());
 	}
 	
 	/**
@@ -47,10 +55,14 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$currentTheme = 'bootstrap';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
-		$simpleThemeManager->setCurrentTheme($currentTheme);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
+		$runtimeThemeManager->setCurrentTheme($currentTheme);
 		
-		Assert::equal($currentTheme, $simpleThemeManager->getCurrentTheme());
+		Assert::equal($currentTheme, $runtimeThemeManager->getCurrentTheme());
 	}
 	
 	/**
@@ -61,10 +73,14 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes';
 		$fallbackTheme = 'bootstrap';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
-		$simpleThemeManager->setFallbackTheme($fallbackTheme);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
+		$runtimeThemeManager->setFallbackTheme($fallbackTheme);
 		
-		Assert::equal($fallbackTheme, $simpleThemeManager->getFallbackTheme());
+		Assert::equal($fallbackTheme, $runtimeThemeManager->getFallbackTheme());
 	}
 	
 	/**
@@ -75,7 +91,11 @@ final class SimpleThemeManagerTestCase extends TestCase
 		$themesDir = __DIR__ . '/data/themes-not-found';
 		
 		Assert::exception(function () use ($themesDir) {
-			$simpleThemeManager = new RuntimeThemeManager($themesDir);
+			new RuntimeThemeManager(
+				$themesDir,
+				'default',
+				'default'
+			);
 		}, 'JR\Themed\DirectoryNotFoundException', "Directory '$themesDir' does not exist or not accessible.");
 	}
 	
@@ -85,13 +105,17 @@ final class SimpleThemeManagerTestCase extends TestCase
 	public function testInvalidThemeNameResultsInInvalidArgumentException()
 	{
 		$themesDir = __DIR__ . '/data/themes';
-		$theme = 'foo';
+		$currentTheme = 'foo';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
 		
-		Assert::exception(function () use ($simpleThemeManager, $theme) {
-			$simpleThemeManager->setCurrentTheme($theme);
-		}, 'JR\Themed\InvalidArgumentException', "Unsupported theme '$theme' given.");
+		Assert::exception(function () use ($runtimeThemeManager, $currentTheme) {
+			$runtimeThemeManager->setCurrentTheme($currentTheme);
+		}, 'JR\Themed\InvalidArgumentException', "Unsupported theme '$currentTheme' given.");
 		
 	}
 	
@@ -101,13 +125,17 @@ final class SimpleThemeManagerTestCase extends TestCase
 	public function testInvalidFallbackThemeNameResultsInInvalidArgumentException()
 	{
 		$themesDir = __DIR__ . '/data/themes';
-		$theme = 'foo';
+		$fallbackTheme = 'foo';
 		
-		$simpleThemeManager = new RuntimeThemeManager($themesDir);
+		$runtimeThemeManager = new RuntimeThemeManager(
+			$themesDir,
+			'default',
+			'default'
+		);
 		
-		Assert::exception(function () use ($simpleThemeManager, $theme) {
-			$simpleThemeManager->setFallbackTheme($theme);
-		}, 'JR\Themed\InvalidArgumentException', "Unsupported theme '$theme' given.");
+		Assert::exception(function () use ($runtimeThemeManager, $fallbackTheme) {
+			$runtimeThemeManager->setFallbackTheme($fallbackTheme);
+		}, 'JR\Themed\InvalidArgumentException', "Unsupported theme '$fallbackTheme' given.");
 	}
 }
 
