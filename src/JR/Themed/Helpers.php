@@ -9,7 +9,7 @@ use Nette\Object;
  *
  * @author RebendaJiri <jiri.rebenda@htmldriven.com>
  */
-final class Helpers extends Object
+class Helpers extends Object
 {
 	/**
 	 * @throws StaticClassException
