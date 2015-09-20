@@ -1,6 +1,7 @@
 # jr/themed
 
 [![Build Status](https://travis-ci.org/rebendajirijr/themed.svg?branch=master)](https://travis-ci.org/rebendajirijr/themed)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/f746be7c-cf6c-4bc1-9c44-f4bf7df3c2f9.svg)]()
 [![Installs](https://img.shields.io/packagist/dt/jr/themed.svg)](https://packagist.org/packages/jr/themed)
 [![License](https://img.shields.io/packagist/l/jr/themed.svg)](https://packagist.org/packages/jr/themed)
 
