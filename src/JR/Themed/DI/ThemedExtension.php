@@ -5,7 +5,6 @@ namespace JR\Themed\DI;
 use Nette\DI\CompilerExtension;
 use Nette\Utils\Validators;
 use JR\Themed\DirectoryNotFoundException;
-use JR\Themed\ThemeManager\RuntimeThemeManager;
 
 /**
  * Nette Framework DI extension with theme related stuff.
