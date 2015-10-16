@@ -28,7 +28,7 @@ class ThemedExtension extends CompilerExtension
 	
 	public function __construct()
 	{
-		$this->defaults['themesDir'] = __DIR__ . '/../../../../../../../../resources/themes';
+		$this->defaults['themesDir'] = __DIR__ . '/../../../../../../../resources/themes';
 		$this->defaults['currentTheme'] = static::DEFAULT_CURRENT_THEME;
 		$this->defaults['fallbackTheme'] = static::DEFAULT_FALLBACK_THEME;
 	}
