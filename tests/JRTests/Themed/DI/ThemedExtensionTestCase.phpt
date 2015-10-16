@@ -67,6 +67,10 @@ final class ThemedExtensionTestCase extends TestCase
 		
 		Assert::same('bootstrap', $themeManager->getCurrentTheme());
 		Assert::same('fallback', $themeManager->getFallbackTheme());
+		
+		$templateFileFormatter = $container->getService('themed.templateFileFormatter');
+		
+		Assert::type('JR\Themed\TemplateFileFormatter\ThemeManagerAwareTemplateFileFormatter', $templateFileFormatter);
 	}
 }
 

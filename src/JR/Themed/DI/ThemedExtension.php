@@ -60,6 +60,9 @@ class ThemedExtension extends CompilerExtension
 				$currentTheme,
 				$fallbackTheme,
 			]);
+		
+		$containerBuilder->addDefinition($this->prefix('templateFileFormatter'))
+			->setClass('JR\Themed\TemplateFileFormatter\ThemeManagerAwareTemplateFileFormatter');
 	}
 	
 	/**
