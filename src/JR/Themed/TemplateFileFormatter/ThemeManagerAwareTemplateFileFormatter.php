@@ -76,8 +76,8 @@ class ThemeManagerAwareTemplateFileFormatter extends Object implements ITemplate
 				$templateFiles[] = $this->unifyDirectorySeparators($this->getThemeManager()->getThemesDir() . DIRECTORY_SEPARATOR . $this->getThemeManager()->getFallbackTheme() . DIRECTORY_SEPARATOR . $trimmedNamespaceName . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $trimmedName . DIRECTORY_SEPARATOR . $control->getAction() . '.latte');
 			}
 		} else {
-			$templateFiles[] = $this->unifyDirectorySeparators($this->getThemeManager()->getThemesDir() . DIRECTORY_SEPARATOR . $this->getThemeManager()->getCurrentTheme() . DIRECTORY_SEPARATOR . $control->getReflection()->getName() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $control->getReflection()->getShortName() . '.latte');
-			$templateFiles[] = $this->unifyDirectorySeparators($this->getThemeManager()->getThemesDir() . DIRECTORY_SEPARATOR . $this->getThemeManager()->getFallbackTheme() . DIRECTORY_SEPARATOR . $control->getReflection()->getName() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $control->getReflection()->getShortName() . '.latte');
+			$templateFiles[] = $this->unifyDirectorySeparators($this->getThemeManager()->getThemesDir() . DIRECTORY_SEPARATOR . $this->getThemeManager()->getCurrentTheme() . DIRECTORY_SEPARATOR . $control->getReflection()->getNamespaceName() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $control->getReflection()->getShortName() . '.latte');
+			$templateFiles[] = $this->unifyDirectorySeparators($this->getThemeManager()->getThemesDir() . DIRECTORY_SEPARATOR . $this->getThemeManager()->getFallbackTheme() . DIRECTORY_SEPARATOR . $control->getReflection()->getNamespaceName() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $control->getReflection()->getShortName() . '.latte');
 		}
 		return $templateFiles;
 	}

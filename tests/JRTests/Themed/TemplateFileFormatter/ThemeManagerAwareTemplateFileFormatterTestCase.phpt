@@ -8,7 +8,7 @@ use JR\Themed\Helpers;
 use JR\Themed\TemplateFileFormatter\ThemeManagerAwareTemplateFileFormatter;
 use JR\Themed\ThemeManager\RuntimeThemeManager;
 use JRTests\Themed\TemplateFileFormatter\TestObjects\FrontModule\SubModule\Presenters\TestPresenter;
-use JRTests\Themed\TemplateFileFormatter\TestObjects\TestControl;
+use JRTests\Themed\TemplateFileFormatter\TestObjects\TestControl\TestControl;
 
 require_once __DIR__ . '/../../bootstrap.php';
 

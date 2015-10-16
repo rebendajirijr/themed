@@ -1,6 +1,6 @@
 <?php
 
-namespace JRTests\Themed\TemplateFileFormatter\TestObjects;
+namespace JRTests\Themed\TemplateFileFormatter\TestObjects\TestControl;
 
 use Nette\Application\UI\Control;
 
